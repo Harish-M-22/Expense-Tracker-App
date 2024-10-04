@@ -62,7 +62,9 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
+      
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('Personal Expense App'),
