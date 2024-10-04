@@ -70,7 +70,7 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
     return Scaffold(
       backgroundColor:Colors.black,
       appBar: AppBar(
-        title: Text('Personal Budgeting App'),
+        title: Text('Personal Expense App'),
         centerTitle: true,
       ),
       body: Padding(
