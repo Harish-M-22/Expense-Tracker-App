@@ -10,10 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       theme: ThemeData(
-        primarySwatch: Colors.teal, // Themed color for the app
-        fontFamily: 'Roboto', // You can use custom fonts if you want
+        primarySwatch: Colors.teal,
+        fontFamily: 'Roboto',
       ),
       home: BudgetHomePage(),
     );
@@ -26,17 +25,14 @@ class BudgetHomePage extends StatefulWidget {
 }
 
 class _BudgetHomePageState extends State<BudgetHomePage> {
-  // List to hold expenses
   final List<Expense> _expenses = [];
 
-  // Controllers for the form
   final _expenseNameController = TextEditingController();
   final _expenseAmountController = TextEditingController();
 
-  // Function to add an expense
   void _addExpense() {
     String name = _expenseNameController.text;
-    double? amount = double.tryParse(_expenseAmountController.text); // Safely parse amount
+    double? amount = double.tryParse(_expenseAmountController.text);
 
     if (name.isEmpty || amount == null || amount <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -53,7 +49,6 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
       _expenses.add(newExpense);
     });
 
-    // Clear inputs
     _expenseNameController.clear();
     _expenseAmountController.clear();
   }
@@ -68,7 +63,7 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Colors.black,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('Personal Expense App'),
         centerTitle: true,
@@ -77,7 +72,6 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Expense Input Form
             Card(
               elevation: 5,
               margin: EdgeInsets.only(bottom: 20),
@@ -107,7 +101,6 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
                       icon: Icon(Icons.add, color: Colors.white),
                       label: Text('Add Expense'),
                       style: ElevatedButton.styleFrom(
-                        
                         padding: EdgeInsets.symmetric(vertical: 12),
                         textStyle: TextStyle(fontSize: 18),
                       ),
@@ -116,7 +109,6 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
                 ),
               ),
             ),
-            // Display List of Expenses
             Expanded(
               child: _expenses.isEmpty
                   ? Center(
@@ -134,7 +126,7 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
                           margin: EdgeInsets.symmetric(vertical: 8),
                           child: ListTile(
                             leading: CircleAvatar(
-                              backgroundColor: Colors.teal,
+                              backgroundColor: const Color.fromARGB(255, 168, 72, 16),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: FittedBox(
@@ -150,7 +142,7 @@ class _BudgetHomePageState extends State<BudgetHomePage> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
-                                  color: Colors.black87),
+                                  color: const Color.fromARGB(221, 0, 0, 0)),
                             ),
                             subtitle: Text(
                               DateFormat.yMMMd().format(expense.date),
